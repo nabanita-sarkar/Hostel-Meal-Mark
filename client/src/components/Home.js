@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import { MDBBtn as Button, MDBLink as Link } from "mdbreact";
 
 class Home extends Component {
   render() {
     return (
       <div style={{ marginTop: "100px" }}>
         <h1> Welcome To MERN STACK application!</h1>
-        <button>
-          <a href="./Register">Register</a>
-        </button>
-        <button>
-          <a href="./Mark">Mark</a>
-        </button>
-        <button>
-          <a href="./Check">Check</a>
-        </button>
+        <Button outline rounded>
+          <Link to="./Register" link>
+            Register
+          </Link>
+        </Button>
+        <Button rounded outline>
+          <Link to="./Mark">Mark</Link>
+        </Button>
+        <Button rounded outline>
+          <Link to="./Check">Check</Link>
+        </Button>
       </div>
     );
   }

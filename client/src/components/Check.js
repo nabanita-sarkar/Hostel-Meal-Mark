@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import {
+  MDBTable as Table,
+  MDBTableBody as Tbody,
+  MDBTableHead as Thead
+} from "mdbreact";
 
 class Check extends Component {
   constructor(props) {
@@ -22,19 +26,26 @@ class Check extends Component {
 
     return (
       <div>
-        <table>
-          {data.map((user, i) => {
-            return (
-              <div>
+        <Table>
+          <Thead>
+            <tr>
+              <th>Name</th>
+              <th>Year</th>
+              <th> Veg or Non-Veg</th>
+            </tr>
+          </Thead>
+          <Tbody>
+            {data.map((user, i) => {
+              return (
                 <tr>
                   <td>{user.name}</td>
                   <td>{user.year}</td>
                   <td>{user.V_NV}</td>
                 </tr>
-              </div>
-            );
-          })}
-        </table>
+              );
+            })}
+          </Tbody>
+        </Table>
       </div>
     );
   }

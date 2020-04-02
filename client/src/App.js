@@ -3,6 +3,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Route from "react-router-dom/Route";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
 import Home from "./components/Home";
 import Mark from "./components/Mark";

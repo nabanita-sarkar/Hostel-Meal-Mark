@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
+import { MDBInput as Input } from "mdbreact";
+import { MDBBtn as Button } from "mdbreact";
 
 class Register extends Component {
   constructor(props) {
@@ -47,22 +49,28 @@ class Register extends Component {
     return (
       <div>
         <form onSubmit={this.addUser} method="user">
-          <input
+          <Input
+            label="Name"
+            hint="Enter Your Name"
             type="text"
             onChange={this.nameChange}
             name={this.state.name}
           />
-          <input
+          <Input
+            label="Year"
+            hint="Enter Your Year"
             type="text"
             onChange={this.yearChange}
             name={this.state.year}
           />
-          <input
+          <Input
+            label="V/NV"
+            hint="Enter Your Choice"
             type="text"
             onChange={this.v_nvChange}
             name={this.state.V_NV}
           />
-          <button type="submit">Register</button>
+          <Button type="submit">Register</Button>
         </form>
         <Redirect to={"/register"} />
       </div>
