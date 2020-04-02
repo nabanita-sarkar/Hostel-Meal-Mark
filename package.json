@@ -2,18 +2,24 @@
   "name": "mysql-crud-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.5",
+    "express-fileupload": "^1.1.6",
+    "mdbreact": "^4.25.5",
+    "mongoose": "^5.9.7",
     "mysql": "^2.17.1",
+    "react-router-dom": "^5.1.2",
     "req-flash": "0.0.3"
   }
 }
