@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
-import { MDBInput as Input } from "mdbreact";
-import { MDBBtn as Button } from "mdbreact";
+import { TextField as Input } from "@material-ui/core";
+import { Row, Container, Col } from "react-bootstrap";
+import StyledButton from "./Button";
+import Layout from "./Layout";
+
+import NavBar from "./NavBar";
 
 class Register extends Component {
   constructor(props) {
@@ -10,7 +14,7 @@ class Register extends Component {
     this.state = {
       name: "",
       year: "",
-      V_NV: ""
+      V_NV: "",
     };
     this.nameChange = this.nameChange.bind(this);
     this.yearChange = this.yearChange.bind(this);
@@ -32,48 +36,73 @@ class Register extends Component {
     const userAdd = {
       name: this.state.name,
       year: this.state.year,
-      V_NV: this.state.V_NV
+      V_NV: this.state.V_NV,
     };
     console.log(userAdd);
     axios
       .post("http://localhost:4000/register", userAdd)
-      .then(res => {
+      .then((res) => {
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   render() {
     return (
-      <div>
+      <Layout>
         <form onSubmit={this.addUser} method="user">
-          <Input
-            label="Name"
-            hint="Enter Your Name"
-            type="text"
-            onChange={this.nameChange}
-            name={this.state.name}
-          />
-          <Input
-            label="Year"
-            hint="Enter Your Year"
-            type="text"
-            onChange={this.yearChange}
-            name={this.state.year}
-          />
-          <Input
-            label="V/NV"
-            hint="Enter Your Choice"
-            type="text"
-            onChange={this.v_nvChange}
-            name={this.state.V_NV}
-          />
-          <Button type="submit">Register</Button>
+          <div style={{ margin: "1rem" }}>
+            <Input
+              label="Name"
+              hint="Enter Your Name"
+              type="text"
+              variant="filled"
+              color="secondary"
+              fullWidth
+              onChange={this.nameChange}
+              name={this.state.name}
+            />
+          </div>
+          <div style={{ margin: "1rem" }}>
+            <Input
+              label="Year"
+              hint="Enter Your Year"
+              type="text"
+              variant="filled"
+              color="secondary"
+              fullWidth
+              onChange={this.yearChange}
+              name={this.state.year}
+            />
+          </div>
+          <div style={{ margin: "1rem" }}>
+            <Input
+              label="V/NV"
+              hint="Enter Your Choice"
+              type="text"
+              variant="filled"
+              color="secondary"
+              fullWidth
+              onChange={this.v_nvChange}
+              name={this.state.V_NV}
+            />
+          </div>
+
+          <StyledButton
+            type="submit"
+            variant="outlined"
+            size="large"
+            href="./Register"
+            className="text-center"
+            style={{ margin: "10%" }}
+          >
+            Register
+          </StyledButton>
         </form>
-        <Redirect to={"/register"} />
-      </div>
+        <Redirect to={"/Register"} />
+      </Layout>
     );
   }
 }
