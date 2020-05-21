@@ -1,55 +1,62 @@
-// import React, { Component } from "react";
-// import axios from "axios";
-// import {
-//   MDBTable as Table,
-//   MDBTableBody as Tbody,
-//   MDBTableHead as Thead
-// } from "mdbreact";
-// import NavBar from "./NavBar";
+import React, { Component } from "react";
+import axios from "axios";
+import {
+  Table,
+  TableBody as Tbody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@material-ui/core";
+import Layout from "./Layout";
 
-// class Check extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       users: []
-//     };
-//   }
+class Check extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+    };
+  }
 
-//   componentDidMount() {
-//     axios.get("http://localhost:4000/check").then(res => {
-//       console.log(res);
-//       this.setState({ users: res.data });
-//     });
-//   }
-//   render() {
-//     var data = this.state.users;
+  componentDidMount() {
+    axios.get("http://localhost:4000/check").then((res) => {
+      console.log(res);
+      this.setState({ users: res.data });
+    });
+  }
+  render() {
+    var data = this.state.users;
 
-//     return (
-//       <div>
-//         <NavBar />
-//         <Table>
-//           <Thead>
-//             <tr>
-//               <th>Name</th>
-//               <th>Year</th>
-//               <th> Veg or Non-Veg</th>
-//             </tr>
-//           </Thead>
-//           <Tbody>
-//             {data.map((user, i) => {
-//               return (
-//                 <tr>
-//                   <td>{user.name}</td>
-//                   <td>{user.year}</td>
-//                   <td>{user.V_NV}</td>
-//                 </tr>
-//               );
-//             })}
-//           </Tbody>
-//         </Table>
-//       </div>
-//     );
-//   }
-// }
+    return (
+      <Layout>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <b>Name</b>
+              </TableCell>
+              <TableCell>
+                <b>Year</b>
+              </TableCell>
+              <TableCell>
+                <b>Veg or Non-Veg</b>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <Tbody>
+            {data.map((user, i) => {
+              return (
+                <TableRow>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.year}</TableCell>
+                  <TableCell>{user.V_NV}</TableCell>
+                </TableRow>
+              );
+            })}
+          </Tbody>
+        </Table>
+      </Layout>
+    );
+  }
+}
 
-// export default Check;
+export default Check;

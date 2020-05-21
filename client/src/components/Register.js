@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
 import { TextField as Input } from "@material-ui/core";
-import { Row, Container, Col } from "react-bootstrap";
 import StyledButton from "./Button";
 import Layout from "./Layout";
-
-import NavBar from "./NavBar";
 
 class Register extends Component {
   constructor(props) {
@@ -58,7 +55,7 @@ class Register extends Component {
               label="Name"
               hint="Enter Your Name"
               type="text"
-              variant="filled"
+              variant="outlined"
               color="secondary"
               fullWidth
               onChange={this.nameChange}
@@ -70,7 +67,7 @@ class Register extends Component {
               label="Year"
               hint="Enter Your Year"
               type="text"
-              variant="filled"
+              variant="outlined"
               color="secondary"
               fullWidth
               onChange={this.yearChange}
@@ -82,7 +79,7 @@ class Register extends Component {
               label="V/NV"
               hint="Enter Your Choice"
               type="text"
-              variant="filled"
+              variant="outlined"
               color="secondary"
               fullWidth
               onChange={this.v_nvChange}
@@ -96,7 +93,7 @@ class Register extends Component {
             size="large"
             href="./Register"
             className="text-center"
-            style={{ margin: "10%" }}
+            style={{ margin: "5%" }}
           >
             Register
           </StyledButton>

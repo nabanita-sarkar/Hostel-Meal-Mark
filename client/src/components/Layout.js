@@ -22,22 +22,11 @@ class Layout extends Component {
           <Container>
             <Row
               style={{
-                // paddingTop: "10.3%",
-                // paddingBottom: "10.3%",
-                justifyContent: "center",
-                alignItems: "center",
+                paddingTop: "10.3%",
                 height: "100vh",
               }}
             >
-              <Col
-                lg={6}
-                style={{
-                  justifyItems: "center",
-                  alignItems: "center",
-                  display: "inline-block",
-                  float: "none",
-                }}
-              >
+              <Col>
                 <Paper
                   elevation={3}
                   style={{
