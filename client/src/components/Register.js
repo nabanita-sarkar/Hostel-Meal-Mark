@@ -49,56 +49,54 @@ class Register extends Component {
   render() {
     return (
       <Layout>
-        <form onSubmit={this.addUser} method="user">
-          <div style={{ margin: "1rem" }}>
-            <Input
-              label="Name"
-              hint="Enter Your Name"
-              type="text"
-              variant="outlined"
-              color="secondary"
-              fullWidth
-              onChange={this.nameChange}
-              name={this.state.name}
-            />
-          </div>
-          <div style={{ margin: "1rem" }}>
-            <Input
-              label="Year"
-              hint="Enter Your Year"
-              type="text"
-              variant="outlined"
-              color="secondary"
-              fullWidth
-              onChange={this.yearChange}
-              name={this.state.year}
-            />
-          </div>
-          <div style={{ margin: "1rem" }}>
-            <Input
-              label="V/NV"
-              hint="Enter Your Choice"
-              type="text"
-              variant="outlined"
-              color="secondary"
-              fullWidth
-              onChange={this.v_nvChange}
-              name={this.state.V_NV}
-            />
-          </div>
+        <div>
+          <form onSubmit={this.addUser} method="user">
+            <div style={{ margin: "1rem" }}>
+              <Input
+                label="Name"
+                hint="Enter Your Name"
+                type="text"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+                onChange={this.nameChange}
+                name={this.state.name}
+                style={{
+                  borderRadius: "50px",
+                }}
+              />
+            </div>
+            <div style={{ margin: "1rem" }}>
+              <Input
+                label="Year"
+                hint="Enter Your Year"
+                type="text"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+                onChange={this.yearChange}
+                name={this.state.year}
+              />
+            </div>
+            <div style={{ margin: "1rem" }}>
+              <Input
+                label="V/NV"
+                hint="Enter Your Choice"
+                type="text"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+                onChange={this.v_nvChange}
+                name={this.state.V_NV}
+              />
+            </div>
 
-          <StyledButton
-            type="submit"
-            variant="outlined"
-            size="large"
-            href="./Register"
-            className="text-center"
-            style={{ margin: "5%" }}
-          >
-            Register
-          </StyledButton>
-        </form>
-        <Redirect to={"/Register"} />
+            <StyledButton type="submit" variant="outlined" href="./Register">
+              Register
+            </StyledButton>
+          </form>
+          <Redirect to={"/Register"} />
+        </div>
       </Layout>
     );
   }
