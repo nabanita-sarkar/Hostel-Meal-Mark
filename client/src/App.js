@@ -6,8 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./components/Home";
 import Mark from "./components/Mark";
-import Check from "./components/Check";
+import Check from "./components/Dashboard/Check";
 import Register from "./components/Register";
+import Login from "./components/Login/Login";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/Mark" exact strict component={Mark} />
         <Route path="/Check" exact strict component={Check} />
         <Route path="/Register" exact strict component={Register} />
+        <Route path="/Login" exact strict component={Login} />
+        <Route path="/Dashboard" exact strict component={Dashboard} />
       </div>
     </Router>
   );

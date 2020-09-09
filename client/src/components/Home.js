@@ -87,6 +87,13 @@ class Home extends Component {
                     Check
                   </StyledButton> */}
                 {/* </Paper> */}
+                <StyledButton
+                  variant="outlined"
+                  color="secondary"
+                  href="./Dashboard"
+                >
+                  Dashboard
+                </StyledButton>
               </Col>
             </Row>
           </Container>
