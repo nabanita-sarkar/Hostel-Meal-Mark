@@ -13,10 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
-mongoose.connect("mongodb://localhost:27017/hostel", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/hostel", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const connection = mongoose.connection;
 
-connection.once("open", function() {
+connection.once("open", function () {
   console.log("MongoDB database connection established successfully");
 });
 

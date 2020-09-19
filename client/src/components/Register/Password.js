@@ -45,8 +45,6 @@ function PasswordInput(props) {
   );
 }
 
-{
-  /* <ControlledStrongPasswordInput /> */
-}
+/* <ControlledStrongPasswordInput /> */
 
 export default PasswordInput;

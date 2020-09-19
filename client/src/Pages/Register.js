@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { Container, Card } from "react-bootstrap";
 import { Input } from "react-rainbow-components";
-import PasswordInput from "./Password";
-import Department from "./Department";
-import Degree from "./Degree";
-import Year from "./Year";
+import PasswordInput from "../components/Register/Password";
+import Department from "../components/Register/Department";
+import Degree from "../components/Register/Degree";
+import Year from "../components/Register/Year";
 import FormLabel from "@material-ui/core/FormLabel";
-import StyledButton from "../Button";
-import Toggle from "./Toggle";
-import Layout from "../Layout";
+import StyledButton from "../components/Button";
+import Toggle from "../components/Register/Toggle";
+import Layout from "../components/Layout";
 
-class Login extends Component {
+class Register extends Component {
   render() {
     return (
       // <Container>
@@ -55,4 +54,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

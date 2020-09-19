@@ -1,74 +1,187 @@
 import React from "react";
-import { Sidebar, SidebarItem } from "react-rainbow-components";
-// import styled from "styled-components";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+// import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import EventIcon from "@material-ui/icons/Event";
+import MenuIcon from "@material-ui/icons/Menu";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-// const SideBarContainer = styled.div.attrs((props) => {
-//   return props.theme.rainbow.palette;
-// })`
-//   background: ${(props) => props.background.main};
-//   width: 120px;
-//   border-bottom-left-radius: 0.875rem;
-// `;
+import Mark from "./Mark";
+import Check from "./Check";
 
-export default class SimpleSidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedItem: "GettingStarted",
-    };
-    this.handleOnSelect = this.handleOnSelect.bind(this);
-  }
+import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom";
 
-  handleOnSelect(e, selectedItem) {
-    return this.setState({ selectedItem });
-  }
+const routes = [
+  // {
+  //   path: "/Dashboard",
+  //   main: () => <Mark />,
+  // },
+  {
+    path: "/Dashboard/Mark",
+    main: () => <Mark />,
+  },
+  {
+    path: "/Dashboard/Check",
+    main: () => <Check />,
+  },
+];
 
-  render() {
-    const { selectedItem } = this.state;
+const drawerWidth = 200;
 
-    return (
-      <Sidebar
-        selectedItem={selectedItem}
-        onSelect={this.handleOnSelect}
-        id="sidebar-1"
-      >
-        <SidebarItem
-          //   icon={<DashboardPurpleIcon />}
-          name="Dashboard"
-          label="Dashboard"
-        />
-        <SidebarItem
-          //   icon={<ApplicationIcon />}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  appBar: {
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    // padding: theme.spacing(3),
+  },
+}));
 
-          name="Aplications"
-          label="Aplications"
-        />
-        <SidebarItem
-          //   icon={<PuzzleIcon />}
-          name="Components"
-          label="Components"
-        />
-        <SidebarItem
-          // icon={<MessagesIcon />}
-          name="Messages"
-          label="Messages"
-        />
-        <SidebarItem
-          // icon={<ChartsIcon />}
-          name="Check"
-          label="Check"
-          href="./Check"
-        />
-      </Sidebar>
-    );
-  }
+function ResponsiveDrawer(props) {
+  const { window } = props;
+  const classes = useStyles();
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <List>
+      <Link to="/Dashboard/Mark" style={{ textDecoration: "none" }}>
+        <ListItem button>
+          <ListItemIcon>
+            <CheckBoxIcon style={{ fontSize: 40 }} />
+          </ListItemIcon>
+          <ListItemText>Mark</ListItemText>
+        </ListItem>
+      </Link>
+      <Link to="/Dashboard/Check" style={{ textDecoration: "none" }}>
+        <ListItem button>
+          <ListItemIcon>
+            <EventIcon style={{ fontSize: 40 }} />
+          </ListItemIcon>
+          <ListItemText>Check</ListItemText>
+        </ListItem>
+      </Link>
+    </List>
+  );
+
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            Meal Mark
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Router>
+        <nav className={classes.drawer} aria-label="mailbox folders">
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Hidden smUp implementation="css">
+            <Drawer
+              container={container}
+              variant="temporary"
+              // anchor={theme.direction === "rtl" ? "right" : "left"}
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <Drawer
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              variant="permanent"
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+        </nav>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                children={<route.main />}
+              />
+            ))}
+          </Switch>
+          {/* {props.children} */}
+        </main>
+      </Router>
+    </div>
+  );
 }
 
-{
-  /* <div>
-  <GlobalHeader src="images/user/user3.jpg" />
-  <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
-    <SimpleSidebar />
-  </SideBarContainer>
-</div>; */
-}
+ResponsiveDrawer.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
+};
+
+export default ResponsiveDrawer;

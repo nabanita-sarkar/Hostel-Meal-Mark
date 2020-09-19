@@ -4,23 +4,19 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Home from "./components/Home";
-import Mark from "./components/Mark";
-import Check from "./components/Dashboard/Check";
-import Register from "./components/Register";
-import Login from "./components/Login/Login";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Home from "./Pages/Home";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Drawer from "../src/components/Dashboard/Drawer";
 
 function App() {
   return (
     <Router className="App">
       <div>
         <Route path="/" exact strict component={Home} />
-        <Route path="/Mark" exact strict component={Mark} />
-        <Route path="/Check" exact strict component={Check} />
         <Route path="/Register" exact strict component={Register} />
         <Route path="/Login" exact strict component={Login} />
-        <Route path="/Dashboard" exact strict component={Dashboard} />
+        <Route path="/Dashboard" exact strict component={Drawer} />
       </div>
     </Router>
   );
